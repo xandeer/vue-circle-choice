@@ -1,0 +1,16 @@
+@mixin full-size {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin half-size {
+  width: 50%;
+  height: 50%;
+}
+
+@mixin all-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
