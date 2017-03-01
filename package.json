@@ -1,8 +1,20 @@
 {
   "name": "vue-circle-choice",
   "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "xandeer <appdwj@icloud.com>",
+  "main": "dist/choice-color",
+   "files": [
+    "dist"
+  ],
+  "description": "A circle color choice with Vue.js",
+  "keywords": [
+    "color",
+    "circle",
+    "vue",
+    "vuejs",
+    "components",
+    "ui"
+  ],
+  "author": "xandeer <kkxandeer@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
