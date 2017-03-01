@@ -1,5 +1,5 @@
 import choiceColor from './components/choice-color';
 
-module.exports = {
+export default {
   choiceColor,
 };
