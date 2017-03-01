@@ -15,7 +15,6 @@
     "ui"
   ],
   "author": "xandeer <kkxandeer@gmail.com>",
-  "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "commit": "git cz",
