@@ -11,7 +11,7 @@ script:
   - xandeerBuild
 
 after_script:
-  - xandeerPush
+  # - xandeerPush
 # E: Build LifeCycle
 
 branches:
