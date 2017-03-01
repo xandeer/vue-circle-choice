@@ -11,12 +11,13 @@ script:
   - xandeerBuild
 
 after_script:
-  # - xandeerPush
+  - npm publish
 # E: Build LifeCycle
 
 branches:
   only:
     - dev
+    - master
 
 env:
  global:

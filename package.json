@@ -1,11 +1,12 @@
 {
   "name": "vue-circle-choice",
-  "version": "0.0.3",
+  "author": "xandeer <kkxandeer@gmail.com>",
+  "description": "A circle color choice with Vue.js",
+  "version": "0.0.4",
   "main": "dist/choice-color",
    "files": [
     "dist"
   ],
-  "description": "A circle color choice with Vue.js",
   "keywords": [
     "color",
     "circle",
@@ -14,7 +15,12 @@
     "components",
     "ui"
   ],
-  "author": "xandeer <kkxandeer@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xandeer/vue-circle-choice.git"
+  },
+  "bugs": "https://github.com/xandeer/vue-circle-choice/issues",
+  "license": "MIT",
   "scripts": {
     "dev": "node build/dev-server.js",
     "commit": "git cz",

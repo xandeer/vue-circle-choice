@@ -47,7 +47,7 @@ export default {
 ### Events
 
 | 事件名 | 参数 | 说明 |
-| -- | -- | -- |
+| ---- | ---- | ---- |
 | updateColor | { index, color } | index: 按钮的索引;   color: 按下按钮的颜色 |
 
 ## 示例
