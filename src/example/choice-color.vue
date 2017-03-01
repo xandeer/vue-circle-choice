@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import choiceColor from '../components/choice-color';
+import choiceColor from 'vue-circle-choice';
 
 const colors = [
   '#1ba6cc',
