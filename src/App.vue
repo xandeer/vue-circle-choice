@@ -1,15 +1,18 @@
 <template lang='pug'>
   #app
     example-choice-color
+    example-circular-nav
 </template>
 
 <script>
 import exampleChoiceColor from './example/choice-color';
+import exampleCircularNav from './example/circular-nav';
 
 export default {
   name: 'app',
   components: {
     exampleChoiceColor,
+    exampleCircularNav,
   },
 };
 </script>
