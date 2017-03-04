@@ -1,12 +1,11 @@
 <template lang="pug">
 #theme
   choice-color(:colors='colors', radius="10em", @updateColor='updateColor')
-  .current(:style="theme")
-    p index: {{index}}
 </template>
 
 <script>
-import choiceColor from 'vue-circle-choice';
+import choiceColor from '../components/choice-color';
+import bus from './common/bus';
 
 const colors = [
   '#1ba6cc',
@@ -32,22 +31,15 @@ export default {
   data() {
     return {
       colors,
-      index: 0,
-      color: colors[0],
     };
-  },
-  computed: {
-    theme() {
-      return {
-        backgroundColor: this.color,
-      };
-    },
   },
   methods: {
     updateColor({ index, color }) {
-      this.index = index;
-      this.color = color;
+      bus.$emit('setTheme', { index, color });
     },
+  },
+  mounted() {
+    bus.$emit('setTheme', { index: 0, color: this.colors[0] });
   },
 };
 </script>
@@ -55,18 +47,7 @@ export default {
 <style lang="scss" scoped>
 #theme {
   width: 100vw;
-  height: 100vh;
+  height: 80vh;
   position: relative;
-}
-
-.current {
-  width: 50%;
-  height: 5em;
-  line-height: 5em;
-  margin: 0 auto;
-  transform: translateY(2em);
-  font-size: 18px;
-  font-weight: bold;
-  color: #fff;
 }
 </style>

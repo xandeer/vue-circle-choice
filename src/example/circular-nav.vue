@@ -1,16 +1,26 @@
 <template lang="pug">
 #circular-nav
-  circular-nav(:labels='labels', :color='color', radius="10em", @updateNav='updateColor')
+  circular-nav(:navs='navs', :color='color', radius="10em", @updateNav='updateNav')
 </template>
 
 <script>
 import circularNav from '../components/circular-nav';
+import bus from './common/bus';
 
-const labels = [
-  'home',
-  'discover',
-  'my',
-];
+/* eslint-disable no-script-url */
+const navs = [{
+  label: 'discover',
+  href: 'javascript:void(0)',
+}, {
+  label: 'home',
+  href: 'javascript:void(0)',
+}, {
+  label: 'home',
+  href: 'javascript:void(0)',
+}, {
+  label: 'my',
+  href: 'javascript:void(0)',
+}];
 
 export default {
   name: 'exampleCircularNav',
@@ -20,8 +30,8 @@ export default {
   data() {
     return {
       index: 0,
-      color: '#754481',
-      labels,
+      color: '',
+      navs,
     };
   },
   computed: {
@@ -32,10 +42,15 @@ export default {
     },
   },
   methods: {
-    updateColor({ index, color }) {
+    updateNav(index) {
       this.index = index;
-      this.color = color;
+      bus.$emit('setNav', index);
     },
+  },
+  created() {
+    bus.$on('setTheme', ({ color }) => {
+      this.color = color;
+    });
   },
 };
 </script>

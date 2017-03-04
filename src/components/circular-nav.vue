@@ -1,10 +1,10 @@
 <template lang="pug">
 .nav-container
   .nav-wrapper(:style='[containerSize, navTransform]')
-    ul.colors
-      li.color-block(v-for='(label, index) in labels', :style='setItem(index)', @click='setNav(label)')
-        a(href='javascript:void(0)', :style='anchorStyle')
-          span {{label}}
+    ul.nav-tabbar
+      li.nav-item(v-for='(nav, index) in navs', :style='setItem(index)', @click='setNav(index)')
+        a(:href='nav.href', :style='anchorStyle')
+          span {{nav.label}}
   .nav-toggle(:style='colorT', @click='toggle') {{ isOpen ? '-' : '+'}}
   .nav-overlay(:class='isOpen ? "on-overlay" : ""', @click='toggle')
 </template>
@@ -15,18 +15,21 @@ export default {
   name: 'circularNav',
   data() {
     return {
-      current: 'home',
       isOpen: false,
+      size: {},
     };
   },
   props: {
-    labels: {
+    navs: {
+      type: Array,
       require: true,
     },
     radius: {
+      type: String,
       default: '10em',
     },
     color: {
+      type: String,
       default: '#754481',
     },
   },
@@ -38,22 +41,18 @@ export default {
       };
     },
     containerSize() {
-      return {
-        width: `calc(2 * ${this.radius})`,
-        height: `calc(2 * ${this.radius})`,
+      return Object.assign({
         bottom: `calc(-${this.radius} - 1px)`,
-      };
+      }, this.size);
     },
     anchorStyle() {
-      const rotate = `-${90 - (90 / this.labels.length)}deg`;
-      const skew = `-${90 - (180 / this.labels.length)}deg`;
-      return {
+      const rotate = `-${90 - (90 / this.navs.length)}deg`;
+      const skew = `-${90 - (180 / this.navs.length)}deg`;
+      return Object.assign({
         transform: `skew(${skew}) rotate(${rotate})`,
-        width: `calc(2 * ${this.radius})`,
-        height: `calc(2 * ${this.radius})`,
         right: `-${this.radius}`,
         bottom: `-${this.radius}`,
-      };
+      }, this.size);
     },
     navTransform() {
       return {
@@ -62,14 +61,12 @@ export default {
     },
   },
   methods: {
-    setNav(label) {
-      const index = this.labels.indexOf(label);
-      this.current = label;
-      this.$emit('updateNav', { index, label });
+    setNav(index) {
+      this.$emit('updateNav', index);
     },
     setItem(index) {
-      const rotate = `${(index * 180) / this.labels.length}deg`;
-      const skew = `${90 - (180 / this.labels.length)}deg`;
+      const rotate = `${(index * 180) / this.navs.length}deg`;
+      const skew = `${90 - (180 / this.navs.length)}deg`;
 
       return {
         backgroundColor: this.color,
@@ -79,6 +76,12 @@ export default {
     toggle() {
       this.isOpen = !this.isOpen;
     },
+  },
+  created() {
+    Object.assign(this.size, {
+      width: `calc(2 * ${this.radius})`,
+      height: `calc(2 * ${this.radius})`,
+    });
   },
 };
 </script>
@@ -107,13 +110,13 @@ ul {
   z-index: 10;
 }
 
-.colors {
+.nav-tabbar {
   @include full-size;
   position: absolute;
   border-radius: 50%;
   overflow: hidden;
 
-  .color-block {
+  .nav-item {
     @include half-size;
     position: absolute;
     transform-origin: 100% 100%;
