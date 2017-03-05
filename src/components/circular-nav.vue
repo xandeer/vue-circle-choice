@@ -4,7 +4,8 @@
     ul.nav-tabbar
       li.nav-item(v-for='(nav, index) in navs', :style='setItem(index)', @click='setNav(index)')
         a(:href='nav.href', :style='anchorStyle')
-          span {{nav.label}}
+          span.iconfont(v-if='nav.icon', :class='nav.icon')
+          span.nav-item-label(v-if='nav.label') {{nav.label}}
   .nav-toggle(:style='colorT', @click='toggle') {{ isOpen ? '-' : '+'}}
   .nav-overlay(:class='isOpen ? "on-overlay" : ""', @click='toggle')
 </template>
@@ -106,6 +107,7 @@ ul {
   margin: auto;
   overflow: hidden;
   color: #fff;
+  background-color: #fff;
   border-radius: 50%;
   z-index: 10;
 }
@@ -135,8 +137,12 @@ ul {
       padding-top: 25%;
       text-decoration: none;
       color: #fff;
-      span {
-        font-size: 1.1em;
+      .nav-item-label {
+        font-size: 0.8em;
+      }
+      .iconfont {
+        display: block;
+        font-size: 1.4em;
       }
     }
   }

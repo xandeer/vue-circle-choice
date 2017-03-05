@@ -1,6 +1,6 @@
 <template lang="pug">
 #circular-nav
-  circular-nav(:navs='navs', :color='color', radius="10em", @updateNav='updateNav')
+  circular-nav(:navs='navs', :color='color', radius="8em", @updateNav='updateNav')
 </template>
 
 <script>
@@ -9,17 +9,17 @@ import bus from './common/bus';
 
 /* eslint-disable no-script-url */
 const navs = [{
-  label: 'discover',
+  label: 'Discover',
   href: 'javascript:void(0)',
+  icon: 'icon-discover',
 }, {
-  label: 'home',
+  label: 'Home',
   href: 'javascript:void(0)',
+  icon: 'icon-home',
 }, {
-  label: 'home',
+  label: 'My',
   href: 'javascript:void(0)',
-}, {
-  label: 'my',
-  href: 'javascript:void(0)',
+  icon: 'icon-my',
 }];
 
 export default {
@@ -56,6 +56,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url('//at.alicdn.com/t/font_0j6ycruegu7q4cxr.css');
+
 #circular-nav {
   margin: auto;
 }
