@@ -3,7 +3,7 @@
   .nav-wrapper(:style='[containerSize, navTransform]')
     ul.nav-tabbar
       li.nav-item(v-for='(nav, index) in navs', :style='setItem(index)', @click='setNav(index)')
-        a(:href='nav.href', :style='anchorStyle')
+        a(:href='nav.href || "javascript:void(0)"', :style='anchorStyle')
           span.iconfont(v-if='nav.icon', :class='nav.icon')
           span.nav-item-label(v-if='nav.label') {{nav.label}}
   .nav-toggle(:style='colorT', @click='toggle') {{ isOpen ? '-' : '+'}}
