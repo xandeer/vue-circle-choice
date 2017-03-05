@@ -2,7 +2,7 @@
   "name": "vue-circle-choice",
   "author": "xandeer <kkxandeer@gmail.com>",
   "description": "A circle color choice with Vue.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "main": "dist/choice-color",
    "files": [
     "dist"
