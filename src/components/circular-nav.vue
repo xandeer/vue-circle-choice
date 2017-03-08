@@ -108,6 +108,7 @@ ul {
   overflow: hidden;
   color: #fff;
   background-color: #fff;
+  border: 1px solid transparent;
   border-radius: 50%;
   z-index: 10;
 }

@@ -2,7 +2,7 @@
 
 > A circular color choice and navigation with Vue.js
 
-> ![](assets/demo.png)
+> ![](assets/demo.gif)
 
 ## Demo
 
